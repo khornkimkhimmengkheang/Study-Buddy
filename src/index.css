@@ -1,0 +1,942 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   BASE VARIABLES (non-color)
+   ============================================ */
+@layer base {
+  :root {
+    --radius: 0.75rem;
+  }
+
+  /* ============================================
+     VIOLET THEME (Default)
+     ============================================ */
+  :root.theme-violet,
+  :root:not([class*="theme-"]) {
+    --background: 270 30% 98%;
+    --foreground: 270 50% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 270 50% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 270 50% 15%;
+    --primary: 265 89% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 270 25% 95%;
+    --secondary-foreground: 270 50% 20%;
+    --muted: 270 20% 94%;
+    --muted-foreground: 270 15% 45%;
+    --accent: 265 89% 96%;
+    --accent-foreground: 265 89% 45%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 270 20% 90%;
+    --input: 270 20% 88%;
+    --ring: 265 89% 58%;
+    --success: 152 76% 40%;
+    --success-foreground: 0 0% 100%;
+    --warning: 35 92% 50%;
+    --warning-foreground: 0 0% 0%;
+    --priority-high: 350 89% 60%;
+    --priority-medium: 35 92% 50%;
+    --priority-low: 152 76% 40%;
+    --status-todo: 270 15% 60%;
+    --status-doing: 265 89% 58%;
+    --status-done: 152 76% 40%;
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(265 89% 58%) 0%,
+      hsl(320 80% 55%) 100%
+    );
+    --gradient-card: linear-gradient(
+      180deg,
+      hsl(0 0% 100%) 0%,
+      hsl(270 30% 98%) 100%
+    );
+    --gradient-sidebar: linear-gradient(
+      180deg,
+      hsl(270 35% 97%) 0%,
+      hsl(270 30% 98%) 100%
+    );
+    --shadow-sm: 0 1px 2px 0 hsl(270 30% 80% / 0.4);
+    --shadow-md: 0 4px 6px -1px hsl(270 30% 75% / 0.3),
+      0 2px 4px -2px hsl(270 30% 75% / 0.3);
+    --shadow-lg: 0 10px 15px -3px hsl(270 30% 75% / 0.3),
+      0 4px 6px -4px hsl(270 30% 75% / 0.3);
+    --shadow-glow: 0 0 20px hsl(265 89% 58% / 0.2);
+    --sidebar-background: 270 35% 97%;
+    --sidebar-foreground: 270 50% 15%;
+    --sidebar-primary: 265 89% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 265 89% 94%;
+    --sidebar-accent-foreground: 265 89% 45%;
+    --sidebar-border: 270 20% 88%;
+    --sidebar-ring: 265 89% 58%;
+  }
+
+  :root.dark.theme-violet,
+  :root.dark:not([class*="theme-"]) {
+    --background: 270 30% 6%;
+    --foreground: 270 20% 95%;
+    --card: 270 25% 10%;
+    --card-foreground: 270 15% 92%;
+    --popover: 270 25% 10%;
+    --popover-foreground: 270 15% 92%;
+    --primary: 270 100% 72%;
+    --primary-foreground: 270 30% 6%;
+    --secondary: 270 20% 16%;
+    --secondary-foreground: 270 15% 90%;
+    --muted: 270 20% 16%;
+    --muted-foreground: 270 15% 60%;
+    --accent: 270 40% 20%;
+    --accent-foreground: 270 100% 80%;
+    --destructive: 350 80% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 270 20% 20%;
+    --input: 270 20% 18%;
+    --ring: 270 100% 72%;
+    --success: 152 70% 50%;
+    --success-foreground: 0 0% 100%;
+    --warning: 35 90% 55%;
+    --warning-foreground: 0 0% 0%;
+    --priority-high: 350 85% 62%;
+    --priority-medium: 35 90% 55%;
+    --priority-low: 152 70% 50%;
+    --status-todo: 270 15% 50%;
+    --status-doing: 270 100% 72%;
+    --status-done: 152 70% 50%;
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(270 100% 65%) 0%,
+      hsl(320 85% 60%) 100%
+    );
+    --gradient-card: linear-gradient(
+      180deg,
+      hsl(270 25% 12%) 0%,
+      hsl(270 25% 10%) 100%
+    );
+    --gradient-sidebar: linear-gradient(
+      180deg,
+      hsl(270 25% 12%) 0%,
+      hsl(270 30% 6%) 100%
+    );
+    --shadow-sm: 0 1px 3px 0 hsl(0 0% 0% / 0.5);
+    --shadow-md: 0 4px 8px -1px hsl(0 0% 0% / 0.5),
+      0 2px 4px -2px hsl(0 0% 0% / 0.5);
+    --shadow-lg: 0 10px 20px -3px hsl(0 0% 0% / 0.5),
+      0 4px 8px -4px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 30px hsl(270 100% 72% / 0.35);
+    --sidebar-background: 270 25% 10%;
+    --sidebar-foreground: 270 15% 92%;
+    --sidebar-primary: 270 100% 72%;
+    --sidebar-primary-foreground: 270 30% 6%;
+    --sidebar-accent: 270 40% 20%;
+    --sidebar-accent-foreground: 270 100% 80%;
+    --sidebar-border: 270 20% 18%;
+    --sidebar-ring: 270 100% 72%;
+  }
+
+  /* ============================================
+     OCEAN THEME
+     ============================================ */
+  :root.theme-ocean {
+    --background: 200 30% 98%;
+    --foreground: 210 50% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 210 50% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 50% 12%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 200 25% 95%;
+    --secondary-foreground: 210 50% 15%;
+    --muted: 200 20% 94%;
+    --muted-foreground: 200 15% 45%;
+    --accent: 199 89% 96%;
+    --accent-foreground: 199 89% 38%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 200 20% 90%;
+    --input: 200 20% 88%;
+    --ring: 199 89% 48%;
+    --success: 152 76% 40%;
+    --success-foreground: 0 0% 100%;
+    --warning: 35 92% 50%;
+    --warning-foreground: 0 0% 0%;
+    --priority-high: 0 84% 60%;
+    --priority-medium: 35 92% 50%;
+    --priority-low: 152 76% 40%;
+    --status-todo: 200 15% 60%;
+    --status-doing: 199 89% 48%;
+    --status-done: 152 76% 40%;
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(199 89% 48%) 0%,
+      hsl(238 75% 58%) 100%
+    );
+    --gradient-card: linear-gradient(
+      180deg,
+      hsl(0 0% 100%) 0%,
+      hsl(200 30% 98%) 100%
+    );
+    --gradient-sidebar: linear-gradient(
+      180deg,
+      hsl(200 35% 97%) 0%,
+      hsl(200 30% 98%) 100%
+    );
+    --shadow-sm: 0 1px 2px 0 hsl(200 30% 80% / 0.4);
+    --shadow-md: 0 4px 6px -1px hsl(200 30% 75% / 0.3),
+      0 2px 4px -2px hsl(200 30% 75% / 0.3);
+    --shadow-lg: 0 10px 15px -3px hsl(200 30% 75% / 0.3),
+      0 4px 6px -4px hsl(200 30% 75% / 0.3);
+    --shadow-glow: 0 0 20px hsl(199 89% 48% / 0.2);
+    --sidebar-background: 200 35% 97%;
+    --sidebar-foreground: 210 50% 12%;
+    --sidebar-primary: 199 89% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 199 89% 94%;
+    --sidebar-accent-foreground: 199 89% 38%;
+    --sidebar-border: 200 20% 88%;
+    --sidebar-ring: 199 89% 48%;
+  }
+
+  :root.dark.theme-ocean {
+    --background: 210 40% 6%;
+    --foreground: 200 20% 95%;
+    --card: 210 35% 10%;
+    --card-foreground: 200 15% 92%;
+    --popover: 210 35% 10%;
+    --popover-foreground: 200 15% 92%;
+    --primary: 192 100% 55%;
+    --primary-foreground: 210 40% 6%;
+    --secondary: 210 25% 16%;
+    --secondary-foreground: 200 15% 90%;
+    --muted: 210 25% 16%;
+    --muted-foreground: 200 15% 60%;
+    --accent: 192 50% 18%;
+    --accent-foreground: 192 100% 70%;
+    --destructive: 0 80% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 25% 20%;
+    --input: 210 25% 18%;
+    --ring: 192 100% 55%;
+    --success: 152 70% 50%;
+    --success-foreground: 0 0% 100%;
+    --warning: 35 90% 55%;
+    --warning-foreground: 0 0% 0%;
+    --priority-high: 0 80% 60%;
+    --priority-medium: 35 90% 55%;
+    --priority-low: 152 70% 50%;
+    --status-todo: 210 15% 50%;
+    --status-doing: 192 100% 55%;
+    --status-done: 152 70% 50%;
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(192 100% 50%) 0%,
+      hsl(238 80% 60%) 100%
+    );
+    --gradient-card: linear-gradient(
+      180deg,
+      hsl(210 35% 12%) 0%,
+      hsl(210 35% 10%) 100%
+    );
+    --gradient-sidebar: linear-gradient(
+      180deg,
+      hsl(210 35% 12%) 0%,
+      hsl(210 40% 6%) 100%
+    );
+    --shadow-sm: 0 1px 3px 0 hsl(0 0% 0% / 0.5);
+    --shadow-md: 0 4px 8px -1px hsl(0 0% 0% / 0.5),
+      0 2px 4px -2px hsl(0 0% 0% / 0.5);
+    --shadow-lg: 0 10px 20px -3px hsl(0 0% 0% / 0.5),
+      0 4px 8px -4px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 30px hsl(192 100% 55% / 0.35);
+    --sidebar-background: 210 35% 10%;
+    --sidebar-foreground: 200 15% 92%;
+    --sidebar-primary: 192 100% 55%;
+    --sidebar-primary-foreground: 210 40% 6%;
+    --sidebar-accent: 192 50% 18%;
+    --sidebar-accent-foreground: 192 100% 70%;
+    --sidebar-border: 210 25% 18%;
+    --sidebar-ring: 192 100% 55%;
+  }
+
+  /* ============================================
+     FOREST THEME
+     ============================================ */
+  :root.theme-forest {
+    --background: 150 30% 98%;
+    --foreground: 160 50% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 160 50% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 160 50% 10%;
+    --primary: 152 76% 40%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 150 25% 95%;
+    --secondary-foreground: 160 50% 15%;
+    --muted: 150 20% 94%;
+    --muted-foreground: 150 15% 42%;
+    --accent: 152 76% 96%;
+    --accent-foreground: 152 76% 30%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 150 20% 90%;
+    --input: 150 20% 88%;
+    --ring: 152 76% 40%;
+    --success: 152 76% 40%;
+    --success-foreground: 0 0% 100%;
+    --warning: 35 92% 50%;
+    --warning-foreground: 0 0% 0%;
+    --priority-high: 0 84% 60%;
+    --priority-medium: 35 92% 50%;
+    --priority-low: 152 76% 40%;
+    --status-todo: 150 15% 60%;
+    --status-doing: 152 76% 40%;
+    --status-done: 170 70% 35%;
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(152 76% 40%) 0%,
+      hsl(172 70% 40%) 100%
+    );
+    --gradient-card: linear-gradient(
+      180deg,
+      hsl(0 0% 100%) 0%,
+      hsl(150 30% 98%) 100%
+    );
+    --gradient-sidebar: linear-gradient(
+      180deg,
+      hsl(150 35% 97%) 0%,
+      hsl(150 30% 98%) 100%
+    );
+    --shadow-sm: 0 1px 2px 0 hsl(150 30% 80% / 0.4);
+    --shadow-md: 0 4px 6px -1px hsl(150 30% 75% / 0.3),
+      0 2px 4px -2px hsl(150 30% 75% / 0.3);
+    --shadow-lg: 0 10px 15px -3px hsl(150 30% 75% / 0.3),
+      0 4px 6px -4px hsl(150 30% 75% / 0.3);
+    --shadow-glow: 0 0 20px hsl(152 76% 40% / 0.2);
+    --sidebar-background: 150 35% 97%;
+    --sidebar-foreground: 160 50% 10%;
+    --sidebar-primary: 152 76% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 152 76% 94%;
+    --sidebar-accent-foreground: 152 76% 30%;
+    --sidebar-border: 150 20% 88%;
+    --sidebar-ring: 152 76% 40%;
+  }
+
+  :root.dark.theme-forest {
+    --background: 160 40% 5%;
+    --foreground: 150 20% 95%;
+    --card: 160 35% 9%;
+    --card-foreground: 150 15% 92%;
+    --popover: 160 35% 9%;
+    --popover-foreground: 150 15% 92%;
+    --primary: 152 85% 50%;
+    --primary-foreground: 160 40% 5%;
+    --secondary: 160 25% 15%;
+    --secondary-foreground: 150 15% 90%;
+    --muted: 160 25% 15%;
+    --muted-foreground: 150 15% 58%;
+    --accent: 152 50% 18%;
+    --accent-foreground: 152 85% 65%;
+    --destructive: 0 80% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 160 25% 18%;
+    --input: 160 25% 16%;
+    --ring: 152 85% 50%;
+    --success: 152 70% 50%;
+    --success-foreground: 0 0% 100%;
+    --warning: 35 90% 55%;
+    --warning-foreground: 0 0% 0%;
+    --priority-high: 0 80% 60%;
+    --priority-medium: 35 90% 55%;
+    --priority-low: 152 70% 50%;
+    --status-todo: 160 15% 48%;
+    --status-doing: 152 85% 50%;
+    --status-done: 170 70% 45%;
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(152 85% 45%) 0%,
+      hsl(172 75% 45%) 100%
+    );
+    --gradient-card: linear-gradient(
+      180deg,
+      hsl(160 35% 11%) 0%,
+      hsl(160 35% 9%) 100%
+    );
+    --gradient-sidebar: linear-gradient(
+      180deg,
+      hsl(160 35% 11%) 0%,
+      hsl(160 40% 5%) 100%
+    );
+    --shadow-sm: 0 1px 3px 0 hsl(0 0% 0% / 0.5);
+    --shadow-md: 0 4px 8px -1px hsl(0 0% 0% / 0.5),
+      0 2px 4px -2px hsl(0 0% 0% / 0.5);
+    --shadow-lg: 0 10px 20px -3px hsl(0 0% 0% / 0.5),
+      0 4px 8px -4px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 30px hsl(152 85% 50% / 0.35);
+    --sidebar-background: 160 35% 9%;
+    --sidebar-foreground: 150 15% 92%;
+    --sidebar-primary: 152 85% 50%;
+    --sidebar-primary-foreground: 160 40% 5%;
+    --sidebar-accent: 152 50% 18%;
+    --sidebar-accent-foreground: 152 85% 65%;
+    --sidebar-border: 160 25% 16%;
+    --sidebar-ring: 152 85% 50%;
+  }
+
+  /* ============================================
+     SUNSET THEME
+     ============================================ */
+  :root.theme-sunset {
+    --background: 30 40% 98%;
+    --foreground: 20 50% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 50% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 50% 12%;
+    --primary: 24 95% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 30 30% 95%;
+    --secondary-foreground: 20 50% 15%;
+    --muted: 30 25% 94%;
+    --muted-foreground: 25 15% 42%;
+    --accent: 24 95% 96%;
+    --accent-foreground: 24 95% 40%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 30 25% 90%;
+    --input: 30 25% 88%;
+    --ring: 24 95% 53%;
+    --success: 152 76% 40%;
+    --success-foreground: 0 0% 100%;
+    --warning: 45 93% 47%;
+    --warning-foreground: 0 0% 0%;
+    --priority-high: 0 84% 60%;
+    --priority-medium: 45 93% 50%;
+    --priority-low: 152 76% 40%;
+    --status-todo: 25 15% 58%;
+    --status-doing: 24 95% 53%;
+    --status-done: 152 76% 40%;
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(24 95% 53%) 0%,
+      hsl(340 82% 52%) 100%
+    );
+    --gradient-card: linear-gradient(
+      180deg,
+      hsl(0 0% 100%) 0%,
+      hsl(30 40% 98%) 100%
+    );
+    --gradient-sidebar: linear-gradient(
+      180deg,
+      hsl(30 40% 97%) 0%,
+      hsl(30 40% 98%) 100%
+    );
+    --shadow-sm: 0 1px 2px 0 hsl(30 35% 80% / 0.4);
+    --shadow-md: 0 4px 6px -1px hsl(30 35% 75% / 0.3),
+      0 2px 4px -2px hsl(30 35% 75% / 0.3);
+    --shadow-lg: 0 10px 15px -3px hsl(30 35% 75% / 0.3),
+      0 4px 6px -4px hsl(30 35% 75% / 0.3);
+    --shadow-glow: 0 0 20px hsl(24 95% 53% / 0.2);
+    --sidebar-background: 30 40% 97%;
+    --sidebar-foreground: 20 50% 12%;
+    --sidebar-primary: 24 95% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 24 95% 94%;
+    --sidebar-accent-foreground: 24 95% 40%;
+    --sidebar-border: 30 25% 88%;
+    --sidebar-ring: 24 95% 53%;
+  }
+
+  :root.dark.theme-sunset {
+    --background: 20 40% 5%;
+    --foreground: 30 25% 95%;
+    --card: 20 35% 9%;
+    --card-foreground: 30 20% 92%;
+    --popover: 20 35% 9%;
+    --popover-foreground: 30 20% 92%;
+    --primary: 24 100% 58%;
+    --primary-foreground: 20 40% 5%;
+    --secondary: 20 25% 15%;
+    --secondary-foreground: 30 15% 90%;
+    --muted: 20 25% 15%;
+    --muted-foreground: 25 15% 55%;
+    --accent: 24 55% 18%;
+    --accent-foreground: 24 100% 70%;
+    --destructive: 0 80% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 20 25% 18%;
+    --input: 20 25% 16%;
+    --ring: 24 100% 58%;
+    --success: 152 70% 50%;
+    --success-foreground: 0 0% 100%;
+    --warning: 45 90% 55%;
+    --warning-foreground: 0 0% 0%;
+    --priority-high: 0 80% 60%;
+    --priority-medium: 45 90% 55%;
+    --priority-low: 152 70% 50%;
+    --status-todo: 25 15% 48%;
+    --status-doing: 24 100% 58%;
+    --status-done: 152 70% 50%;
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(24 100% 55%) 0%,
+      hsl(340 85% 55%) 100%
+    );
+    --gradient-card: linear-gradient(
+      180deg,
+      hsl(20 35% 11%) 0%,
+      hsl(20 35% 9%) 100%
+    );
+    --gradient-sidebar: linear-gradient(
+      180deg,
+      hsl(20 35% 11%) 0%,
+      hsl(20 40% 5%) 100%
+    );
+    --shadow-sm: 0 1px 3px 0 hsl(0 0% 0% / 0.5);
+    --shadow-md: 0 4px 8px -1px hsl(0 0% 0% / 0.5),
+      0 2px 4px -2px hsl(0 0% 0% / 0.5);
+    --shadow-lg: 0 10px 20px -3px hsl(0 0% 0% / 0.5),
+      0 4px 8px -4px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 30px hsl(24 100% 58% / 0.35);
+    --sidebar-background: 20 35% 9%;
+    --sidebar-foreground: 30 20% 92%;
+    --sidebar-primary: 24 100% 58%;
+    --sidebar-primary-foreground: 20 40% 5%;
+    --sidebar-accent: 24 55% 18%;
+    --sidebar-accent-foreground: 24 100% 70%;
+    --sidebar-border: 20 25% 16%;
+    --sidebar-ring: 24 100% 58%;
+  }
+
+  /* ============================================
+     ROSE THEME
+     ============================================ */
+  :root.theme-rose {
+    --background: 350 35% 98%;
+    --foreground: 345 50% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 345 50% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 345 50% 12%;
+    --primary: 346 77% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 350 30% 95%;
+    --secondary-foreground: 345 50% 15%;
+    --muted: 350 25% 94%;
+    --muted-foreground: 345 15% 42%;
+    --accent: 346 77% 96%;
+    --accent-foreground: 346 77% 40%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 350 25% 90%;
+    --input: 350 25% 88%;
+    --ring: 346 77% 50%;
+    --success: 152 76% 40%;
+    --success-foreground: 0 0% 100%;
+    --warning: 35 92% 50%;
+    --warning-foreground: 0 0% 0%;
+    --priority-high: 0 84% 60%;
+    --priority-medium: 35 92% 50%;
+    --priority-low: 152 76% 40%;
+    --status-todo: 345 15% 58%;
+    --status-doing: 346 77% 50%;
+    --status-done: 152 76% 40%;
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(346 77% 50%) 0%,
+      hsl(280 70% 55%) 100%
+    );
+    --gradient-card: linear-gradient(
+      180deg,
+      hsl(0 0% 100%) 0%,
+      hsl(350 35% 98%) 100%
+    );
+    --gradient-sidebar: linear-gradient(
+      180deg,
+      hsl(350 40% 97%) 0%,
+      hsl(350 35% 98%) 100%
+    );
+    --shadow-sm: 0 1px 2px 0 hsl(350 35% 80% / 0.4);
+    --shadow-md: 0 4px 6px -1px hsl(350 35% 75% / 0.3),
+      0 2px 4px -2px hsl(350 35% 75% / 0.3);
+    --shadow-lg: 0 10px 15px -3px hsl(350 35% 75% / 0.3),
+      0 4px 6px -4px hsl(350 35% 75% / 0.3);
+    --shadow-glow: 0 0 20px hsl(346 77% 50% / 0.2);
+    --sidebar-background: 350 40% 97%;
+    --sidebar-foreground: 345 50% 12%;
+    --sidebar-primary: 346 77% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 346 77% 94%;
+    --sidebar-accent-foreground: 346 77% 40%;
+    --sidebar-border: 350 25% 88%;
+    --sidebar-ring: 346 77% 50%;
+  }
+
+  :root.dark.theme-rose {
+    --background: 345 35% 5%;
+    --foreground: 350 25% 95%;
+    --card: 345 30% 9%;
+    --card-foreground: 350 20% 92%;
+    --popover: 345 30% 9%;
+    --popover-foreground: 350 20% 92%;
+    --primary: 346 85% 60%;
+    --primary-foreground: 345 35% 5%;
+    --secondary: 345 25% 15%;
+    --secondary-foreground: 350 15% 90%;
+    --muted: 345 25% 15%;
+    --muted-foreground: 345 15% 55%;
+    --accent: 346 50% 18%;
+    --accent-foreground: 346 90% 72%;
+    --destructive: 0 80% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 345 25% 18%;
+    --input: 345 25% 16%;
+    --ring: 346 85% 60%;
+    --success: 152 70% 50%;
+    --success-foreground: 0 0% 100%;
+    --warning: 35 90% 55%;
+    --warning-foreground: 0 0% 0%;
+    --priority-high: 0 80% 60%;
+    --priority-medium: 35 90% 55%;
+    --priority-low: 152 70% 50%;
+    --status-todo: 345 15% 48%;
+    --status-doing: 346 85% 60%;
+    --status-done: 152 70% 50%;
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(346 85% 55%) 0%,
+      hsl(280 75% 60%) 100%
+    );
+    --gradient-card: linear-gradient(
+      180deg,
+      hsl(345 30% 11%) 0%,
+      hsl(345 30% 9%) 100%
+    );
+    --gradient-sidebar: linear-gradient(
+      180deg,
+      hsl(345 30% 11%) 0%,
+      hsl(345 35% 5%) 100%
+    );
+    --shadow-sm: 0 1px 3px 0 hsl(0 0% 0% / 0.5);
+    --shadow-md: 0 4px 8px -1px hsl(0 0% 0% / 0.5),
+      0 2px 4px -2px hsl(0 0% 0% / 0.5);
+    --shadow-lg: 0 10px 20px -3px hsl(0 0% 0% / 0.5),
+      0 4px 8px -4px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 30px hsl(346 85% 60% / 0.35);
+    --sidebar-background: 345 30% 9%;
+    --sidebar-foreground: 350 20% 92%;
+    --sidebar-primary: 346 85% 60%;
+    --sidebar-primary-foreground: 345 35% 5%;
+    --sidebar-accent: 346 50% 18%;
+    --sidebar-accent-foreground: 346 90% 72%;
+    --sidebar-border: 345 25% 16%;
+    --sidebar-ring: 346 85% 60%;
+  }
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    height: auto;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: "Outfit", sans-serif;
+    min-height: 100vh;
+    height: auto;
+  }
+
+  #root {
+    min-height: 100vh;
+    height: auto;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Outfit", sans-serif;
+  }
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+@layer utilities {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .gradient-sidebar {
+    background: var(--gradient-sidebar);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Scroll utilities */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* iOS touch scroll optimization */
+  .touch-scroll {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  /* Safe area utilities for notched devices */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-left {
+    padding-left: env(safe-area-inset-left);
+  }
+
+  .safe-right {
+    padding-right: env(safe-area-inset-right);
+  }
+
+  .safe-x {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  .safe-y {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Full height accounting for iOS viewport */
+  .h-screen-safe {
+    height: 100vh;
+    height: 100dvh;
+    height: -webkit-fill-available;
+  }
+
+  .min-h-screen-safe {
+    min-height: 100vh;
+    min-height: 100dvh;
+    min-height: -webkit-fill-available;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+}
+
+/* ============================================
+   KEYFRAMES
+   ============================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
+}
+
+/* Touch devices - thinner scrollbars */
+@media (hover: none) and (pointer: coarse) {
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+/* ============================================
+   iOS & iPadOS SPECIFIC FIXES
+   ============================================ */
+/* Fix for iOS Safari 100vh issue */
+@supports (-webkit-touch-callout: none) {
+  html,
+  body,
+  #root {
+    height: -webkit-fill-available;
+  }
+
+  /* Fix iOS momentum scrolling */
+  .overflow-y-auto,
+  .overflow-auto,
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent iOS text size adjustment */
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Fix for position fixed elements on iOS */
+  .fixed {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+}
+
+/* iPhone SE, iPhone 8 and smaller */
+@media screen and (max-width: 375px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* iPhone 12/13/14 Pro and similar */
+@media screen and (min-width: 390px) and (max-width: 428px) {
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+/* iPad Mini and iPad (portrait) */
+@media screen and (min-width: 744px) and (max-width: 834px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  html,
+  body {
+    overflow-y: scroll !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* Responsive container padding */
+@media screen and (min-width: 834px) {
+  .container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* ============================================
+   COMPACT MODE
+   ============================================ */
+.compact .task-card {
+  @apply py-2;
+}
+
+.compact .task-card .task-title {
+  @apply text-sm;
+}
+
+.compact .task-card .task-meta {
+  @apply text-xs gap-1.5;
+}
